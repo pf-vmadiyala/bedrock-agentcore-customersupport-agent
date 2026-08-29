@@ -1,0 +1,8 @@
+# Traces
+trace.json
+
+# Logs
+*.log
+
+# OS Metadata
+.DS_Store
