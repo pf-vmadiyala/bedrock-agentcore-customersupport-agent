@@ -27,8 +27,15 @@
             }
           }
         },
+        "onlineEvalConfigs": {
+          "QualityMonitor": {
+            "onlineEvaluationConfigId": "CustomerSupport_QualityMonitor-2840se5lAH",
+            "onlineEvaluationConfigArn": "arn:aws:bedrock-agentcore:us-east-2:138257835519:online-evaluation-config/CustomerSupport_QualityMonitor-2840se5lAH",
+            "agent": "CustomerSupport"
+          }
+        },
         "stackName": "AgentCore-CustomerSupport-default",
-        "deployHash": "5c24dabc603b904c"
+        "deployHash": "66f679fe3f1d3f3f"
       }
     }
   }
