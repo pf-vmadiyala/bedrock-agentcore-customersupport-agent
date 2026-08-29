@@ -17,8 +17,19 @@
       "networkMode": "PUBLIC",
       "protocol": "HTTP",
       "requestHeaderAllowlist": [
-        "X-Amzn-Bedrock-AgentCore-Runtime-Custom-User-Id"
-      ]
+        "X-Amzn-Bedrock-AgentCore-Runtime-Custom-User-Id",
+        "Authorization"
+      ],
+      "authorizerType": "CUSTOM_JWT",
+      "authorizerConfiguration": {
+        "customJwtAuthorizer": {
+          "discoveryUrl": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_rQ0tJNg53/.well-known/openid-configuration",
+          "allowedClients": [
+            "7ea6kgoaaqrv96qfttvg3kt5q9",
+            "3hn027cv9liraqdc65lbtvrb0v"
+          ]
+        }
+      }
     }
   ],
   "memories": [
@@ -41,9 +52,9 @@
   "onlineEvalConfigs": [],
   "agentCoreGateways": [
     {
-      "name": "my-gateway",
+      "name": "my-gateway-secure",
       "protocolType": "None",
-      "description": "Gateway for my-gateway",
+      "description": "Gateway for my-gateway-secure",
       "targets": [
         {
           "name": "WarrantyCheck",
@@ -54,9 +65,28 @@
           }
         }
       ],
-      "authorizerType": "NONE",
+      "authorizerType": "CUSTOM_JWT",
+      "authorizerConfiguration": {
+        "customJwtAuthorizer": {
+          "discoveryUrl": "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_rQ0tJNg53/.well-known/openid-configuration",
+          "allowedClients": [
+            "7ea6kgoaaqrv96qfttvg3kt5q9",
+            "3hn027cv9liraqdc65lbtvrb0v"
+          ]
+        }
+      },
       "enableSemanticSearch": true,
       "exceptionLevel": "NONE"
+    }
+  ],
+  "unassignedTargets": [
+    {
+      "name": "WarrantyCheck",
+      "targetType": "lambdaFunctionArn",
+      "lambdaFunctionArn": {
+        "lambdaArn": "arn:aws:lambda:us-east-2:138257835519:function:workshop-warranty-check",
+        "toolSchemaFile": "app/CustomerSupport/tool/warranty_schema.json"
+      }
     }
   ],
   "policyEngines": [],
